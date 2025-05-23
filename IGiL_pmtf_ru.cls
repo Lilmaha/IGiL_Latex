@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pmrf_ru}[2023/11/15 Custom Patch for REVTeX]
+\ProvidesClass{pmrf_ru}[2025/05/23 Custom Patch for REVTeX]
 
 \LoadClass[aps,prl,reprint]{revtex4-2}
 \RequirePackage{etoolbox}
