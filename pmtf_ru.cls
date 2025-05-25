@@ -1,7 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pmrf_ru}[2025/05/23 Custom Patch for REVTeX]
+\ProvidesClass{pmtf_ru}[2023/11/15 Custom Patch for REVTeX]
 
 \LoadClass[aps,prl,reprint]{revtex4-2}
+
+\RequirePackage[utf-8]{inputenc}
+\RequirePackage[russian]{babel}
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 \RequirePackage{xpatch}
@@ -132,7 +135,7 @@
 }
 
 \newcommand{\vup}{\rule{0pt}{1.6ex}\ignorespaces}
-\newcommand{\vDn}{\raisebox{-2.3mm}}{\rule{0pt}{1mm}\ignorespaces}
+\newcommand{\vDn}{\raisebox{-2.3mm}{\rule{0pt}{1mm}\ignorespaces}}
 
 % БИБЛИОГРАФИЯ
 \NewDocumentCommand{\authors}{m}{%
@@ -192,20 +195,23 @@
   }
 }
 
-\NewDocumentCommand{\datax}{mm}%
-  \vskip10mm
-  \hfill\parbox[t]{79mm}{\small
-    \IfStrEq{#2}{**}{%
+\NewDocumentCommand{\datax}{mm}{%
+  \vskip10mm%
+  \hfill\parbox[t]{79mm}{\small%
+    \if#2**%
       \centerline{\itshape Номер документа:~\slshape#1.}%
-    }{
+    \else%
       \centerline{\itshape Номер документа:~\slshape#1,\ }%
       \centerline{\itshape Авторы:~\slshape#2.}%
-    }
-  }
+    \fi%
+  }%
+}
 
 \AtBeginDocument{
   \def\refname{Литература}%
   \baselineskip 13.5pt plus .1pt%
+  \providecommand{\bibdata}{testNotes}
+  \providecommand{\bibstyle}{aipnum4-2} 
 }
 
 \endinput
